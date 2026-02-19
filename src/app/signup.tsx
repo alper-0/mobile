@@ -1,6 +1,5 @@
 import { Input } from "@/components/Input";
-import { Link } from "expo-router";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 export default function Index() {
   return (
@@ -9,11 +8,10 @@ export default function Index() {
         source={require("@/assets/image1.png")}
         style={styles.ilustration}
       />
+      <Input placeholder="Nome Completo" />
       <Input placeholder="E-mail" keyboardType="email-address" />
       <Input placeholder="Senha" secureTextEntry />
-      <Link href={"/signup"}>
-        <Text>Não tem uma conta? Cadastre-se aqui</Text>
-      </Link>
+      <Input placeholder="Senha de novo" secureTextEntry />
     </View>
   );
 }
