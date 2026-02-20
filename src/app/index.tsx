@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Link } from "expo-router";
 import { Image, StyleSheet, Text, View } from "react-native";
@@ -12,8 +13,11 @@ export default function Index() {
       <Input placeholder="E-mail" keyboardType="email-address" />
       <Input placeholder="Senha" secureTextEntry />
       <Link href={"/signup"}>
-        <Text>Não tem uma conta? Cadastre-se aqui</Text>
+        <Text style={styles.footerLink}>
+          Não tem uma conta? Cadastre-se aqui
+        </Text>
       </Link>
+      <Button label="Login"></Button>
     </View>
   );
 }
