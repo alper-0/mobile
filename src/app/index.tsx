@@ -1,46 +1,96 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Link } from "expo-router";
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 export default function Index() {
   return (
-    <View style={styles.container}>
-      <Image
-        source={require("@/assets/image1.png")}
-        style={styles.ilustration}
-      />
-      <Input placeholder="E-mail" keyboardType="email-address" />
-      <Input placeholder="Senha" secureTextEntry />
-      <Link href={"/signup"}>
-        <Text style={styles.footerLink}>
-          Não tem uma conta? Cadastre-se aqui
-        </Text>
-      </Link>
-      <Button label="Login"></Button>
-    </View>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.select({ ios: "padding", android: "height" })}
+    >
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.contentContainer}
+        showsHorizontalScrollIndicator={false}
+      >
+        <View style={styles.container}>
+          <Image
+            source={require("@/assets/madara.png")}
+            style={styles.ilustration}
+          />
+          <Text style={styles.title}>Entrar</Text>
+          <Text style={styles.subtitle}>
+            Acesse sua conta com e-mail e senha.
+          </Text>
+          <Input
+            placeholder="E-mail"
+            keyboardType="email-address"
+            placeholderTextColor="#6b3f3f"
+          />
+          <Input
+            placeholder="Senha"
+            secureTextEntry
+            placeholderTextColor="#6b3f3f"
+          />
+          <Link href={"/signup"}>
+            <Text style={styles.footerLink}>
+              Não tem uma conta? Cadastre-se aqui.
+            </Text>
+          </Link>
+          <Button label="Entrar" />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  scroll: {
+    backgroundColor: "#0a0608",
+  },
+  contentContainer: {
+    flexGrow: 1,
+  },
   container: {
     flex: 1,
-    backgroundColor: "#FDFDFD",
-    padding: 32,
+    backgroundColor: "#0a0608",
+    paddingHorizontal: 28,
+    paddingTop: 16,
+    paddingBottom: 52,
+    gap: 12,
   },
   ilustration: {
     width: "100%",
-    height: 330,
+    height: 300,
     resizeMode: "contain",
-    marginTop: 62,
+    marginTop: 48,
+    marginBottom: 12,
   },
-  footerText: {
-    textAlign: "center",
-    marginTop: 24,
-    color: "#585860",
+  title: {
+    fontSize: 32,
+    fontWeight: "900",
+    color: "#c0392b",
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "#c0392b",
   },
   footerLink: {
-    color: "#0929b8",
-    fontWeight: 700,
+    color: "#c0392b",
+    fontWeight: "600",
+    fontSize: 13,
+    textAlign: "center",
+    marginTop: 4,
+    marginBottom: 4,
+    fontStyle: "italic",
   },
 });
