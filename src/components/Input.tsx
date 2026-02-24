@@ -13,5 +13,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingLeft: 12,
     margin: 8,
+    color: "#fa0101ff",
   },
 });

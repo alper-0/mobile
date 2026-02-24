@@ -1,7 +1,9 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Link } from "expo-router";
+import { useState } from "react";
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -12,6 +14,12 @@ import {
 } from "react-native";
 
 export default function Index() {
+  const [email, setEmail] = useState("");
+
+  function HandleSignIn() {
+    console.log(email);
+    Alert.alert("ERROR", "ERROR");
+  }
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -35,6 +43,7 @@ export default function Index() {
             placeholder="E-mail"
             keyboardType="email-address"
             placeholderTextColor="#6b3f3f"
+            onChangeText={setEmail}
           />
           <Input
             placeholder="Senha"
@@ -46,7 +55,7 @@ export default function Index() {
               Não tem uma conta? Cadastre-se aqui.
             </Text>
           </Link>
-          <Button label="Entrar" />
+          <Button label="Entrar" onPress={HandleSignIn} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
