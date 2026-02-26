@@ -1,7 +1,9 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Link } from "expo-router";
+import { useState } from "react";
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -12,6 +14,18 @@ import {
 } from "react-native";
 
 export default function Signup() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+
+  function handlePassword() {
+    if (senha !== confirmarSenha) {
+      Alert.alert("Atencao", "Senha nao confere!");
+    } else {
+      Alert.alert("Successo", "Senha confirmada");
+    }
+  }
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -37,18 +51,20 @@ export default function Signup() {
             placeholder="Senha"
             secureTextEntry
             placeholderTextColor="#6b3f3f"
+            onChangeText={setSenha}
           />
           <Input
             placeholder="Senha de novo"
             secureTextEntry
             placeholderTextColor="#6b3f3f"
+            onChangeText={setConfirmarSenha}
           />
           <Link href={"/"}>
             <Text style={styles.footerLink}>
               Tem uma conta? Volta ao inicio.
             </Text>
           </Link>
-          <Button label="Cadastra-se"></Button>
+          <Button label="Cadastra-se" onPress={handlePassword}></Button>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

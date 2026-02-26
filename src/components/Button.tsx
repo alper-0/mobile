@@ -10,7 +10,7 @@ type ButtonProps = TouchableOpacityProps & {
 };
 export function Button({ label, style, ...rest }: ButtonProps) {
   return (
-    <TouchableOpacity style={[styles.container, style]}>
+    <TouchableOpacity style={[styles.container, style]} {...rest}>
       <Text style={styles.label}>{label}</Text>
     </TouchableOpacity>
   );

@@ -15,11 +15,14 @@ import {
 
 export default function Index() {
   const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
 
   function HandleSignIn() {
     console.log(email);
     Alert.alert("ERROR", "ERROR");
   }
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -29,13 +32,14 @@ export default function Index() {
         style={styles.scroll}
         contentContainerStyle={styles.contentContainer}
         showsHorizontalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
       >
         <View style={styles.container}>
           <Image
             source={require("@/assets/madara.png")}
             style={styles.ilustration}
           />
-          <Text style={styles.title}>Entrar</Text>
+          <Text style={styles.title}>Entrar {email}</Text>
           <Text style={styles.subtitle}>
             Acesse sua conta com e-mail e senha.
           </Text>
@@ -49,6 +53,7 @@ export default function Index() {
             placeholder="Senha"
             secureTextEntry
             placeholderTextColor="#6b3f3f"
+            onChangeText={setSenha}
           />
           <Link href={"/signup"}>
             <Text style={styles.footerLink}>
